@@ -1,0 +1,37 @@
+.sidenav-container {
+    min-width: 250px !important;
+}
+
+.drawer-container {
+    height: 100vh;
+}
+
+.menu-item:hover {
+    background-color: rgb(201 231 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.active-menu {
+    background-color: rgb(21 147 254 / 27%);
+    ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.active-menu a {
+    color: rgb(21, 145, 254) !important;
+}
+
+.menu-item {
+    color: rgb(74, 74, 74) !important;
+    padding: 8px;
+    border-bottom: 1px solid rgb(239, 239, 239);
+    border-top: 1px solid rgb(239, 239, 239);
+}
+
+.menu-item a {
+    color: rgb(74, 74, 74);
+    font-size: 14px;
+    font-weight: 500;
+}

@@ -1,0 +1,33 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="sidenav-container" mode="side" [opened]="sideNavOpen">
+    <div class="p-2">
+      <p class="text-primary fw-bold">
+        CRM
+      </p>
+      <div class="menu-item" routerLinkActive="active-menu">
+        <a [routerLink]="['companies']" class="text-decoration-none">
+          Companies
+        </a>
+      </div>
+      <div class="menu-item">
+        <a [routerLink]="['contacts']" class="text-decoration-none">
+          Contacts
+        </a>
+      </div>
+      <div class="menu-item">
+        <a [routerLink]="['addresses']" class="text-decoration-none">
+          Addresses
+        </a>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div>
+    <button type="button" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+
+  </div>
+
+</mat-drawer-container>

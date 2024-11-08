@@ -1,0 +1,44 @@
+<div class="p-3">
+    <h2>
+        Company Details
+    </h2>
+    <div class="mat-elevation-z2 p-3" *ngIf="company">
+        <h4>
+            {{company.name}}
+        </h4>
+
+        <h4 class="fw-bold">
+            Address
+        </h4>
+        <p>
+            {{company.address.streetNumber}} {{company.address.streetNumber}}, {{company.address.city}}
+            <br />
+            {{company.address.state}} {{company.address.country}}
+        </p>
+
+        <div class="mat-elevation-z2 p-3">
+            <h4 class="fw-bold">
+                Contacts
+            </h4>
+            <div class="mat-elevation-z2 p-2" *ngFor="let contact of company.contacts">
+                <span class="fw-bold">
+                    {{contact.firstName}} {{contact.lastName}}
+                </span>
+                <br />
+                Email: {{contact.email}}
+                <br />
+                Phone: {{contact.phone}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="p-3">
+    <button mat-raised-button [routerLink]="['/companies']" class="me-2">
+        Back
+    </button>
+    <button mat-raised-button color="primary" [routerLink]="['/companies/edit/', companyId]">
+        Edit
+    </button>
+</div>

@@ -1,0 +1,76 @@
+<div class="p-2">
+    <h2 class="mb-1">
+        Companies
+    </h2>
+    <button mat-raised-button [routerLink]="['/companies/create']" class="mb-2">
+        <mat-icon>add</mat-icon>
+        CreateCompany
+    </button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="d-flex gap-2 align-items-center">
+                    <mat-icon>location_on</mat-icon>
+                    <span>
+                        {{element.address.streetNumber}}
+                        {{element.address.streetName}},
+                        {{element.address.city}}
+                        {{element.address.state}},
+                        {{element.address.country}}
+                    </span>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+                <div class="d-flex gap-2">
+                    <button mat-raised-button [routerLink]="['details/', element.id]">
+                        <mat-icon>open_in_new</mat-icon>
+                        Details
+                    </button>
+                    <button mat-raised-button color="primary" [routerLink]="['edit/', element.id]">
+                        <mat-icon>edit</mat-icon>
+                        Edit
+                    </button>
+                    <button mat-raised-button color="warn" (click)="onDeleteClick(element)">
+                        <mat-icon>close</mat-icon>
+                        Delete
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<!-- Deletion confirmation dialog -->
+<ng-template #deleteDialog>
+    <h3 mat-dialog-title>
+        Delete a Company
+    </h3>
+    <div mat-dialog-content>
+        Are you sure you want too delete the company?
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-raised-button [matDialogClose]="false">
+            Cancel
+        </button>
+        <button mat-raised-button color="warn" [matDialogClose]="true">
+            Delete
+        </button>
+    </div>
+</ng-template>
